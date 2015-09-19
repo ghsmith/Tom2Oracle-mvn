@@ -35,11 +35,6 @@
             <artifactId>super-csv</artifactId>
             <version>2.3.1</version>
         </dependency>
-        <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>SNAPSHOT</version>
-        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
