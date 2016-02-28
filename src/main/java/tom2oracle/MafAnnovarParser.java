@@ -6,6 +6,8 @@
 package tom2oracle;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
@@ -57,41 +59,39 @@ public class MafAnnovarParser {
         Pattern patternTsvFileName = Pattern.compile("^([^_]*)_([^_]*)_(.*).tsv$");
         String mafFileName;
         Pattern patternMafFileName = Pattern.compile("^([^_]*)_([^_]*)_(.*).maf$");
-        while ((tsvFileName = stdIn.readLine()) != null && tsvFileName.length() != 0 && (mafFileName = stdIn.readLine()) != null && mafFileName.length() != 0) {
+        while ((tsvFileName = stdIn.readLine()) != null && tsvFileName.length() != 0) {
             try {
                 tx = sess.beginTransaction();
                 LOGGER.info("processing TSV file '" + tsvFileName + "'");
-                LOGGER.info("processing MAF file '" + mafFileName + "'");
+                
                 Matcher matcherTsvFileName = patternTsvFileName.matcher(tsvFileName);
-                Matcher matcherMafFileName = patternMafFileName.matcher(mafFileName);
+                
                 String libraryPrep;
                 String sampleName;
                 String pipeline;
-                String libraryPrepMaf;
-                String sampleNameMaf;
-                String pipelineMaf;
-                if(matcherTsvFileName.find() && matcherMafFileName.find()) {
+                
+                if(matcherTsvFileName.find()) {
                     libraryPrep = matcherTsvFileName.group(1);
                     sampleName = matcherTsvFileName.group(2);
                     pipeline = matcherTsvFileName.group(3);
-                    libraryPrepMaf = matcherMafFileName.group(1);
-                    sampleNameMaf = matcherMafFileName.group(2);
-                    pipelineMaf = matcherMafFileName.group(3);
-                    if (!libraryPrep.equals(libraryPrepMaf) || !sampleName.equals(sampleNameMaf) || !pipelineMaf.equals(pipelineMaf) )
-                    {
-                        LOGGER.info("the TSV file "+ tsvFileName + " and MAF file " + mafFileName + " are not equal. Skipping");
-                        continue;
-                    }
+                    mafFileName=matcherTsvFileName.group(1) + matcherTsvFileName.group(2) + matcherTsvFileName.group(3) + ".maf";
+                    
                     LOGGER.info("...libraryPrep = '" + libraryPrep + "'");
                     LOGGER.info("...sampleName = '" + sampleName + "'");
                     LOGGER.info("...pipeline = '" + pipeline + "'");
                 }
                 else {
-                    throw new Exception("cannot parse '" + tsvFileName + "' as a TSV file name or " + mafFileName + " as a MAF file name - skipping");
+                    throw new Exception("cannot parse '" + tsvFileName + "' as a TSV file name - skipping");
                 }
-                
-                
-                BufferedReader mafReader = new BufferedReader(new FileReader(mafFileName));
+                BufferedReader mafReader;
+                try
+                {
+                mafReader = new BufferedReader(new FileReader(mafFileName));
+                }catch (Exception e) 
+                {
+                        throw new Exception("there is no " + mafFileName + " - skipping");
+                        
+                 }
                 mafReader.readLine();//because first line is junk, it gives the version number, those punks
                 ICsvMapReader mapReaderMaf = new CsvMapReader(mafReader, CsvPreference.TAB_PREFERENCE);
                 String[] headerMaf = mapReaderMaf.getHeader(true);
