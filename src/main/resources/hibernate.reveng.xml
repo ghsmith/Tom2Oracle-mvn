@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
-  <schema-selection match-schema="TOM_20150918"/>
+  <schema-selection match-schema="TOM_20160225"/>
   <table-filter match-name="FUSION"/>
   <table-filter match-name="EXPRESSION"/>
   <table-filter match-name="VARIANT"/>
+  <table-filter match-name="MAFANNOVAR"/>
 </hibernate-reverse-engineering>

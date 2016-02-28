@@ -5,8 +5,9 @@
     <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
     <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
     <property name="hibernate.connection.url">jdbc:oracle:thin:@cheech.pathology.emory.edu:49161:XE</property>
-    <property name="hibernate.connection.username">tom_20150918</property>
+    <property name="hibernate.connection.username">tom_20160225</property>
     <property name="hibernate.connection.password">taco99Salad</property>
+    <mapping class="tom2oracle.data.Mafannovar"/>
     <mapping class="tom2oracle.data.Fusion"/>
     <mapping class="tom2oracle.data.Variant"/>
     <mapping class="tom2oracle.data.Expression"/>
