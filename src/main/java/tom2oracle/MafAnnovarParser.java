@@ -107,19 +107,27 @@ public class MafAnnovarParser {
                     mafannovar.setLibraryPrep(libraryPrep);
                     mafannovar.setSampleName(sampleName);
                     mafannovar.setPipeline(pipeline);
+                    mafannovar.setTumorSampleBarcode(sampleName);
+                    mafannovar.setConsequence(mafMap.get("Consequence"));
+                    mafannovar.setHugoSymbol(mafMap.get("Hugo_Symbol"));
+                    mafannovar.setVariantClassification(mafMap.get("Variant_Classification"));
                     
                     //mafannovar.setGeneRefgene(tsvMap.get("Gene.refGene"));
-                    //mafannovar.setFuncRefgene(tsvMap.get("Func.refGene"));
+                    mafannovar.setFuncRefgene(tsvMap.get("Func.refGene"));
                             
-                    //mafannovar.setExonicFuncRefgene(tsvMap.get("ExonicFunc.refGene"));
+                    mafannovar.setExonicFuncRefgene(tsvMap.get("ExonicFunc.refGene"));
                     try { if(tsvMap.get("Alt Variant Freq") != null) { mafannovar.setAltVariantFreq(new BigDecimal(tsvMap.get("Alt Variant Freq"))); } } catch(Exception e) { }
                     try { if(tsvMap.get("Read Depth") != null) { mafannovar.setReadDepth(new BigDecimal(tsvMap.get("Read Depth"))); } } catch(Exception e) { }
                     try { if(tsvMap.get("Alt Read Depth") != null) { mafannovar.setAltReadDepth(new BigDecimal(tsvMap.get("Alt Read Depth"))); } } catch(Exception e) { }
-                    try { if(mafMap.get("Chromsome") != null) { mafannovar.setChromosome(new BigDecimal(mafMap.get("Chromosome"))); } } catch(Exception e) { }
+                    //try { if(mafMap.get("Chromsome") != null) { mafannovar.setChromosome(new BigDecimal(mafMap.get("Chromosome"))); } } catch(Exception e) { }
+                    mafannovar.setChromosome(mafMap.get("Chromosome"));
                     try { if(tsvMap.get("Start") != null) { mafannovar.setStartPosition(new BigDecimal(tsvMap.get("Start"))); } } catch(Exception e) { }
                     try { if(tsvMap.get("End") != null) { mafannovar.setEndPosition(new BigDecimal(tsvMap.get("End"))); } } catch(Exception e) { }
+                    mafannovar.setBiotype(mafMap.get("BIOTYPE"));
+                    mafannovar.setDbsnpRs(mafMap.get("dbSNP_RS"));
                     mafannovar.setRefBase(tsvMap.get("Ref"));
                     mafannovar.setAltBase(tsvMap.get("Alt"));
+                    
                     //mafannovar.setGenedetailRefgene(tsvMap.get("GeneDetail.refGene"));
                     //mafannovar.setAachangeRefgene(tsvMap.get("AAChange.refGene"));
                     //mafannovar.setOne000g2014sepAll(tsvMap.get("1000g2014sep_all"));
@@ -137,27 +145,26 @@ public class MafAnnovarParser {
                         }
                     }
                     mafannovar.setClinvar20140929(tsvMap.get("clinvar_20140929"));
-                    try { if(tsvMap.get("ExAC_ALL") != null) { mafannovar.setExac03(new BigDecimal(tsvMap.get("ExAC_ALL"))); } } catch(Exception e) { }
-                    mafannovar.setTumorSampleBarcode(mafMap.get("Tumor_Sample_Barcode"));
-                    mafannovar.setTumorSampleBarcode(sampleName);
-                    mafannovar.setHugoSymbol(mafMap.get("Hugo_Symbol"));
-                    mafannovar.setVariantClassification(mafMap.get("Variant_Classification"));
-                    mafannovar.setAminoAcidChange(mafMap.get("Amino_Acid_Change"));
+                    try { if(tsvMap.get("ExAC_ALL") != null) { mafannovar.setExacAll(new BigDecimal(tsvMap.get("ExAC_ALL"))); } } catch(Exception e) { };
+                    
+                    
                     //mafannovar.setDbsnpRs(tsvMap.get("snp138"));
                     //mafannovar.setDbsnpValStatus(mafMap.get("dbSNP_Val_Status"));
                     mafannovar.setHgvsc(mafMap.get("HGVSc"));
                     mafannovar.setHgvsp(mafMap.get("HGVSp"));
-                    mafannovar.setTranscript(mafMap.get("Transcript"));
+                    mafannovar.setTranscript(mafMap.get("Transcript_ID"));
                     mafannovar.setExonNumber(mafMap.get("Exon_Number"));
                     mafannovar.setRefseq(mafMap.get("RefSeq"));
                     mafannovar.setExistingVariation(mafMap.get("Existing_Variation"));
-                    mafannovar.setSiftPred(mafMap.get("SIFT_phred"));
-                    mafannovar.setPolyphen2HdivPred(mafMap.get("Polyphen2_HDIV_pred"));
-                    mafannovar.setPolyphen2HvarPred(mafMap.get("Polyphen2_HVAR_pred"));
-                    mafannovar.setLrtPred(mafMap.get("LRT_pred"));
-                    mafannovar.setMutationtasterPred(mafMap.get("MutationTaster_pred"));
-                    mafannovar.setMutationassessorPred(mafMap.get("MutationAssessor_pred"));
-                    mafannovar.setInterproDomain(mafMap.get("Interpro_domain"));
+                    mafannovar.setDomains(mafMap.get("Domains"));
+                    mafannovar.setPubmed(mafMap.get("PUBMED"));
+                    mafannovar.setInterproDomain(tsvMap.get("Interpro_domain"));
+                    mafannovar.setSiftPred(tsvMap.get("SIFT_phred"));
+                    mafannovar.setPolyphen2HdivPred(tsvMap.get("Polyphen2_HDIV_pred"));
+                    mafannovar.setPolyphen2HvarPred(tsvMap.get("Polyphen2_HVAR_pred"));
+                    mafannovar.setLrtPred(tsvMap.get("LRT_pred"));
+                    mafannovar.setMutationtasterPred(tsvMap.get("MutationTaster_pred"));
+                    mafannovar.setMutationassessorPred(tsvMap.get("MutationAssessor_pred"));
                     try { if(tsvMap.get("CADD_phred") != null) { mafannovar.setCaddPhred(new BigDecimal(tsvMap.get("CADD_phred"))); } } catch(Exception e) { }
                     
                     
