@@ -131,13 +131,29 @@ public class MafAnnovarParser {
                     try { if(mafMap.get("End_Position") != null) { mafannovar.setEndvep(new BigDecimal(mafMap.get("End_Position"))); } } catch(Exception e) { }
                     if (!mafannovar.getChromosomevep().equals(mafannovar.getChromosome()) || !mafannovar.getStartPosition().equals(mafannovar.getStartvep()) )
                     {
+                        if (!mafannovar.getStartPosition().equals(mafannovar.getStartvep()))
+                        {
+                            BigDecimal difference;
+                            difference = mafannovar.getStartPosition().subtract(mafannovar.getStartvep());
+                            if (difference.abs().intValue() > 150)
+                            {
+                                LOGGER.info("the maf chromosome is" + mafannovar.getChromosomevep());
+                                LOGGER.info("the maf start position is" + mafannovar.getStartvep());
+                                LOGGER.info("the tsv chromosome is" + mafannovar.getChromosome());
+                                LOGGER.info("the tsv start position is" + mafannovar.getStartPosition());
+                               throw new Exception("chromosome or postion do not match throwing out + " + tsvFileName);
+                            }
+                        }else
+                        {
                         LOGGER.info("the maf chromosome is" + mafannovar.getChromosomevep());
                         LOGGER.info("the maf start position is" + mafannovar.getStartvep());
                         
                         LOGGER.info("the tsv chromosome is" + mafannovar.getChromosome());
                         LOGGER.info("the tsv start position is" + mafannovar.getStartPosition());
-                        
                         throw new Exception("chromosome or postion do not match throwing out + " + tsvFileName);
+                        }
+                        
+                        
                     }
                     mafannovar.setBiotype(mafMap.get("BIOTYPE"));
                     mafannovar.setDbsnpRs(mafMap.get("dbSNP_RS"));
