@@ -129,14 +129,14 @@ public class MafAnnovarParser {
                     mafannovar.setChromosomevep(mafMap.get("Chromosome"));
                     try { if(mafMap.get("Start_Position") != null) { mafannovar.setStartvep(new BigDecimal(mafMap.get("Start_Position"))); } } catch(Exception e) { }
                     try { if(mafMap.get("End_Position") != null) { mafannovar.setEndvep(new BigDecimal(mafMap.get("End_Position"))); } } catch(Exception e) { }
-                    if (!mafannovar.getChromosomevep().equals(mafannovar.getChromosome()) || !mafannovar.getStartPosition().equals(mafannovar.getStartvep()) || !mafannovar.getEndPosition().equals(mafannovar.getEndvep()))
+                    if (!mafannovar.getChromosomevep().equals(mafannovar.getChromosome()) || !mafannovar.getStartPosition().equals(mafannovar.getStartvep()) )
                     {
                         LOGGER.info("the maf chromosome is" + mafannovar.getChromosomevep());
                         LOGGER.info("the maf start position is" + mafannovar.getStartvep());
-                        LOGGER.info("the maf end position is" + mafannovar.getEndvep());
+                        
                         LOGGER.info("the tsv chromosome is" + mafannovar.getChromosome());
                         LOGGER.info("the tsv start position is" + mafannovar.getStartPosition());
-                        LOGGER.info("the tsv end position is" + mafannovar.getEndPosition());
+                        
                         throw new Exception("chromosome or postion do not match throwing out + " + tsvFileName);
                     }
                     mafannovar.setBiotype(mafMap.get("BIOTYPE"));
