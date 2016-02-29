@@ -74,7 +74,7 @@ public class MafAnnovarParser {
                     libraryPrep = matcherTsvFileName.group(1);
                     sampleName = matcherTsvFileName.group(2);
                     pipeline = matcherTsvFileName.group(3);
-                    mafFileName=matcherTsvFileName.group(1) + matcherTsvFileName.group(2) + matcherTsvFileName.group(3) + ".maf";
+                    mafFileName=matcherTsvFileName.group(1) + "_" + matcherTsvFileName.group(2) + "_" + matcherTsvFileName.group(3) + ".maf";
                     
                     LOGGER.info("...libraryPrep = '" + libraryPrep + "'");
                     LOGGER.info("...sampleName = '" + sampleName + "'");
