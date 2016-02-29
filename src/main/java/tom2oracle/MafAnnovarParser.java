@@ -112,7 +112,7 @@ public class MafAnnovarParser {
                     mafannovar.setHugoSymbol(mafMap.get("Hugo_Symbol"));
                     mafannovar.setVariantClassification(mafMap.get("Variant_Classification"));
                     
-                    //mafannovar.setGeneRefgene(tsvMap.get("Gene.refGene"));
+                    mafannovar.setGeneRefgene(tsvMap.get("Gene.refGene"));
                     mafannovar.setFuncRefgene(tsvMap.get("Func.refGene"));
                             
                     mafannovar.setExonicFuncRefgene(tsvMap.get("ExonicFunc.refGene"));
@@ -120,17 +120,27 @@ public class MafAnnovarParser {
                     try { if(tsvMap.get("Read Depth") != null) { mafannovar.setReadDepth(new BigDecimal(tsvMap.get("Read Depth"))); } } catch(Exception e) { }
                     try { if(tsvMap.get("Alt Read Depth") != null) { mafannovar.setAltReadDepth(new BigDecimal(tsvMap.get("Alt Read Depth"))); } } catch(Exception e) { }
                     //try { if(mafMap.get("Chromsome") != null) { mafannovar.setChromosome(new BigDecimal(mafMap.get("Chromosome"))); } } catch(Exception e) { }
-                    mafannovar.setChromosome(mafMap.get("Chromosome"));
+                    mafannovar.setChromosome(tsvMap.get("Chr"));
                     try { if(tsvMap.get("Start") != null) { mafannovar.setStartPosition(new BigDecimal(tsvMap.get("Start"))); } } catch(Exception e) { }
                     try { if(tsvMap.get("End") != null) { mafannovar.setEndPosition(new BigDecimal(tsvMap.get("End"))); } } catch(Exception e) { }
+                    mafannovar.setChromosome(tsvMap.get("Chr"));
+                    try { if(tsvMap.get("Start") != null) { mafannovar.setStartPosition(new BigDecimal(tsvMap.get("Start"))); } } catch(Exception e) { }
+                    try { if(tsvMap.get("End") != null) { mafannovar.setEndPosition(new BigDecimal(tsvMap.get("End"))); } } catch(Exception e) { }
+                    mafannovar.setChromosomevep(mafMap.get("Chromosome"));
+                    try { if(mafMap.get("Start_Position") != null) { mafannovar.setStartvep(new BigDecimal(mafMap.get("Start_Position"))); } } catch(Exception e) { }
+                    try { if(mafMap.get("End_Position") != null) { mafannovar.setEndvep(new BigDecimal(mafMap.get("End_Position"))); } } catch(Exception e) { }
+                    if (!mafannovar.getChromosomevep().equals(mafannovar.getChromosome()) || !mafannovar.getStartPosition().equals(mafannovar.getStartvep()) || !mafannovar.getEndPosition().equals(mafannovar.getEndvep()))
+                    {
+                        throw new Exception("chromosome or postions to not match throwing out + " + tsvFileName);
+                    }
                     mafannovar.setBiotype(mafMap.get("BIOTYPE"));
                     mafannovar.setDbsnpRs(mafMap.get("dbSNP_RS"));
                     mafannovar.setRefBase(tsvMap.get("Ref"));
                     mafannovar.setAltBase(tsvMap.get("Alt"));
                     
                     //mafannovar.setGenedetailRefgene(tsvMap.get("GeneDetail.refGene"));
-                    //mafannovar.setAachangeRefgene(tsvMap.get("AAChange.refGene"));
-                    //mafannovar.setOne000g2014sepAll(tsvMap.get("1000g2014sep_all"));
+                    mafannovar.setAachangeRefgene(tsvMap.get("AAChange.refGene"));
+                    mafannovar.setOne000g2014sepAll(tsvMap.get("1000g2014sep_all"));
                     mafannovar.setSnp138(tsvMap.get("snp138"));
                     mafannovar.setCosmic70(tsvMap.get("cosmic70"));
                     if(mafannovar.getCosmic70() != null) {
@@ -148,8 +158,7 @@ public class MafAnnovarParser {
                     try { if(tsvMap.get("ExAC_ALL") != null) { mafannovar.setExacAll(new BigDecimal(tsvMap.get("ExAC_ALL"))); } } catch(Exception e) { };
                     
                     
-                    //mafannovar.setDbsnpRs(tsvMap.get("snp138"));
-                    //mafannovar.setDbsnpValStatus(mafMap.get("dbSNP_Val_Status"));
+                    
                     mafannovar.setHgvsc(mafMap.get("HGVSc"));
                     mafannovar.setHgvsp(mafMap.get("HGVSp"));
                     mafannovar.setTranscript(mafMap.get("Transcript_ID"));
