@@ -87,7 +87,7 @@ public class FusionParser {
                     mapReader.read(header);
                     header = new String[] {"#fusion_name","JunctionReads","SpanningFrags","Splice_type","LeftGene","LeftBreakpoint","RightGene","RightBreakpoint","JunctionReads2","SpanningFrags2","dummy"};
                 }
-                else if(pipeline.toUpperCase().contains("JAFFA")) {
+                else if(pipeline.toUpperCase().contains("JAFFA") || pipeline.toUpperCase().contains("FUSIONCATCHER") ) {
                     header = mapReader.getHeader(true);
                 }
                 else {
@@ -105,7 +105,7 @@ public class FusionParser {
                         try { if(tsvMap.get("JunctionReads") != null) { fusion.setJunctionReads(new BigDecimal(tsvMap.get("JunctionReads"))); } } catch(Exception e) { }
                         try { if(tsvMap.get("SpanningFrags") != null) { fusion.setSpanningFrags(new BigDecimal(tsvMap.get("SpanningFrags"))); } } catch(Exception e) { }
                     }
-                    else if(pipeline.toUpperCase().contains("JAFFA")) {
+                    else if(pipeline.toUpperCase().contains("JAFFA") || pipeline.toUpperCase().contains("FUSIONCATCHER")) {
                         fusion.setFusionGene1(tsvMap.get("fusion genes").split(":")[0]);
                         fusion.setFusionGene2(tsvMap.get("fusion genes").split(":")[1]);
                         try { if(tsvMap.get("spanning reads") != null) { fusion.setJunctionReads(new BigDecimal(tsvMap.get("spanning reads"))); } } catch(Exception e) { }

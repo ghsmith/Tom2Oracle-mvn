@@ -190,7 +190,7 @@ public class MafAnnovarParser {
                     mafannovar.setDomains(mafMap.get("Domains"));
                     mafannovar.setPubmed(mafMap.get("PUBMED"));
                     mafannovar.setInterproDomain(tsvMap.get("Interpro_domain"));
-                    mafannovar.setSiftPred(tsvMap.get("SIFT_phred"));
+                    mafannovar.setSiftPred(tsvMap.get("SIFT_pred"));
                     mafannovar.setPolyphen2HdivPred(tsvMap.get("Polyphen2_HDIV_pred"));
                     mafannovar.setPolyphen2HvarPred(tsvMap.get("Polyphen2_HVAR_pred"));
                     mafannovar.setLrtPred(tsvMap.get("LRT_pred"));
