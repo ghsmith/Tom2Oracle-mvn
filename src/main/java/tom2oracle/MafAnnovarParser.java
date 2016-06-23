@@ -284,19 +284,32 @@ public class MafAnnovarParser {
                     String siftOutput = "^([a-z]+)\\(([0-9.]+)\\)";
                     //example : tolerated(0.38)  -> breaking into group 1 -> tolerated and group 2 -> 0.38
                     Pattern patternSift = Pattern.compile(siftOutput);
+                    
+                    try { 
+                        if(mafMap.get("EA_MAF") != null)
+                        {
                     Matcher matcherSift = patternSift.matcher(mafMap.get("SIFT"));
                     if(matcherSift.find())
                     {
                         mafannovar.setSift(matcherSift.group(1));
                         mafannovar.setSiftScore(new BigDecimal(matcherSift.group(2)));
                     }
+                    }
+                    }catch(Exception e) {};
+                    try { 
+                        if(mafMap.get("EA_MAF") != null)
+                        {
                     mafannovar.setPolyphen(mafMap.get("PolyPhen"));
                     Matcher matcherPoly = patternSift.matcher(mafMap.get("PolyPhen"));
                     if(matcherPoly.find())
                     {
-                        mafannovar.setPolyphen(matcherSift.group(1));
-                        mafannovar.setPolyphenScore(new BigDecimal(matcherSift.group(2)));
+                        mafannovar.setPolyphen(matcherPoly.group(1));
+                        mafannovar.setPolyphenScore(new BigDecimal(matcherPoly.group(2)));
                     }
+                    }
+                    }catch(Exception e) {};
+                    
+                    
                     mafannovar.setImpact(mafMap.get("IMPACT"));
                     mafannovar.setHgvsc(mafMap.get("HGVSc"));
                     mafannovar.setHgvsp(mafMap.get("HGVSp"));
