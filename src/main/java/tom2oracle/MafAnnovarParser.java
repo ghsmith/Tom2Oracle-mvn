@@ -176,27 +176,100 @@ public class MafAnnovarParser {
                             mafannovar.setCosmic70TotalOccurrences(new BigDecimal(totalOccurences));
                         }
                     }
-                    mafannovar.setClinvar20140929(tsvMap.get("clinvar_20140929"));
-                    try { if(tsvMap.get("ExAC_ALL") != null) { mafannovar.setExacAll(new BigDecimal(tsvMap.get("ExAC_ALL"))); } } catch(Exception e) { };
+                   mafannovar.setClinvar20140929(tsvMap.get("clinvar_20140929"));
+                   
+                   try { if(tsvMap.get("exac03") != null) { mafannovar.setExac03(new BigDecimal(tsvMap.get("exac03"))); } } catch(Exception e) { };
+                   try { if(tsvMap.get("dbnsfp30a") != null) { mafannovar.setDbnsfp30a(new BigDecimal(tsvMap.get("dbnsfp30a"))); } } catch(Exception e) { };
+                   mafannovar.setDbnsfp31aInterpro(tsvMap.get("dbnsfp31a_interpro"));  
+                    String exacOutput = "[AGTC]:([.0-9]+),|$";
+                    Pattern patternExac = Pattern.compile(exacOutput);
+                    
+                    Matcher matcherGmaf = patternExac.matcher(mafMap.get("GMAF"));
+                    if (matcherGmaf.find())
+                    {
+                        mafannovar.setExacGmaf(matcherGmaf.group(1));
+                    }
+                      Matcher matcherAfr = patternExac.matcher(mafMap.get("AFR_MAF"));
+                    if (matcherAfr.find())
+                    {
+                        mafannovar.setExacAfr(matcherAfr.group(1));
+                    }
+                    Matcher matcherAmr = patternExac.matcher(mafMap.get("AMR_MAF"));
+                      if (matcherAmr.find())
+                    {
+                        mafannovar.setExacAmr(matcherAmr.group(1));
+                    }
+                    Matcher matcherEas = patternExac.matcher(mafMap.get("EAS_MAF"));
+                    if (matcherEas.find())
+                    {
+                        mafannovar.setExacEas(matcherEas.group(1));
+                    }
+                    Matcher matcherEur = patternExac.matcher(mafMap.get("EUR_MAF"));
+                     if (matcherEur.find())
+                    {
+                        mafannovar.setExacEur(matcherEur.group(1));
+                    }
+                    
+                    Matcher matcherSas = patternExac.matcher(mafMap.get("SAS_MAF"));
+                    if (matcherSas.find())
+                    {
+                        mafannovar.setExacSas(matcherSas.group(1));
+                    }
+                    Matcher matcherAa = patternExac.matcher(mafMap.get("AA_MAF"));
+                    if (matcherAa.find())
+                    {
+                        mafannovar.setExacAa(matcherAa.group(1));
+                    }
+                    Matcher matcherEa = patternExac.matcher(mafMap.get("EA_MAF"));
+                    if (matcherEa.find())
+                    {
+                        mafannovar.setExacEa(matcherEa.group(1));
+                    }
                     
                     
-                    
+                    //mafannovar.setExacGmaf(mafMap.get("GMAF"));
+                    //mafannovar.setExacAfr(mafMap.get("AFR_MAF"));
+                   // mafannovar.setExacAmr(mafMap.get("AMR_MAF"));
+                    //mafannovar.setExacEas(mafMap.get("EAS_MAF"));
+                   // mafannovar.setExacEur(mafMap.get("EUR_MAF"));
+                   // mafannovar.setExacSas(mafMap.get("SAS_MAF"));
+                    //mafannovar.setExacAa(mafMap.get("AA_MAF"));
+                   // mafannovar.setExacEa(mafMap.get("EA_MAF"));
+                    String siftOutput = "^([a-z]+)\\(([0-9.]+)\\)";
+                    //example : tolerated(0.38)  -> breaking into group 1 -> tolerated and group 2 -> 0.38
+                    Pattern patternSift = Pattern.compile(siftOutput);
+                    Matcher matcherSift = patternSift.matcher(mafMap.get("SIFT"));
+                    if(matcherSift.find())
+                    {
+                        mafannovar.setSift(matcherSift.group(1));
+                        mafannovar.setSiftScore(new BigDecimal(matcherSift.group(2)));
+                    }
+                    mafannovar.setPolyphen(mafMap.get("PolyPhen"));
+                    Matcher matcherPoly = patternSift.matcher(mafMap.get("PolyPhen"));
+                    if(matcherPoly.find())
+                    {
+                        mafannovar.setPolyphen(matcherSift.group(1));
+                        mafannovar.setPolyphenScore(new BigDecimal(matcherSift.group(2)));
+                    }
+                    mafannovar.setImpact(mafMap.get("IMPACT"));
                     mafannovar.setHgvsc(mafMap.get("HGVSc"));
                     mafannovar.setHgvsp(mafMap.get("HGVSp"));
                     mafannovar.setTranscript(mafMap.get("Transcript_ID"));
                     mafannovar.setExonNumber(mafMap.get("Exon_Number"));
                     mafannovar.setRefseq(mafMap.get("RefSeq"));
                     mafannovar.setExistingVariation(mafMap.get("Existing_Variation"));
-                    mafannovar.setDomains(mafMap.get("Domains"));
+                    mafannovar.setDomains(mafMap.get("DOMAINS"));
                     mafannovar.setPubmed(mafMap.get("PUBMED"));
-                    mafannovar.setInterproDomain(tsvMap.get("Interpro_domain"));
-                    mafannovar.setSiftPred(tsvMap.get("SIFT_pred"));
-                    mafannovar.setPolyphen2HdivPred(tsvMap.get("Polyphen2_HDIV_pred"));
-                    mafannovar.setPolyphen2HvarPred(tsvMap.get("Polyphen2_HVAR_pred"));
-                    mafannovar.setLrtPred(tsvMap.get("LRT_pred"));
-                    mafannovar.setMutationtasterPred(tsvMap.get("MutationTaster_pred"));
-                    mafannovar.setMutationassessorPred(tsvMap.get("MutationAssessor_pred"));
-                    try { if(tsvMap.get("CADD_phred") != null) { mafannovar.setCaddPhred(new BigDecimal(tsvMap.get("CADD_phred"))); } } catch(Exception e) { }
+                    mafannovar.setClinSig(mafMap.get("CLIN_SIG"));
+                    //mafannovar.setInterproDomain(tsvMap.get("Interpro_domain"));
+                    
+                    //mafannovar.setSiftPred(tsvMap.get("SIFT_pred"));
+                    //mafannovar.setPolyphen2HdivPred(tsvMap.get("Polyphen2_HDIV_pred"));
+                    //mafannovar.setPolyphen2HvarPred(tsvMap.get("Polyphen2_HVAR_pred"));
+                    //mafannovar.setLrtPred(tsvMap.get("LRT_pred"));
+                    //mafannovar.setMutationtasterPred(tsvMap.get("MutationTaster_pred"));
+                    //mafannovar.setMutationassessorPred(tsvMap.get("MutationAssessor_pred"));
+                   // try { if(tsvMap.get("CADD_phred") != null) { mafannovar.setCaddPhred(new BigDecimal(tsvMap.get("CADD_phred"))); } } catch(Exception e) { }
                     
                     
                     
