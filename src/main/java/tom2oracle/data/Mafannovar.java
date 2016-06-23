@@ -5,7 +5,10 @@ package tom2oracle.data;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -176,7 +179,9 @@ public class Mafannovar  implements java.io.Serializable {
 
     
     @Column(name="MAFANNOVAR_SAID", unique=true, nullable=false, precision=22, scale=0)
-    public BigDecimal getMafannovarSaid() {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "G1")
+    @SequenceGenerator(name = "G1", sequenceName = "SAID_SEQ")
+     public BigDecimal getMafannovarSaid() {
         return this.mafannovarSaid;
     }
     
