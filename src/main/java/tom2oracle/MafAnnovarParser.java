@@ -176,9 +176,11 @@ public class MafAnnovarParser {
                             mafannovar.setCosmic70TotalOccurrences(new BigDecimal(totalOccurences));
                         }
                     }
-                   mafannovar.setClinvar20140929(tsvMap.get("clinvar_20140929"));
-                   
-                   
+                   mafannovar.setClinvar20160302sig(tsvMap.get("CLINSIG"));
+                   mafannovar.setClinvar20160302dbn(tsvMap.get("CLINDBN"));
+                   mafannovar.setClinvar20160302acc(tsvMap.get("CLINACC"));
+                   mafannovar.setClinvar20160302dsdb(tsvMap.get("CLINDSDB"));
+                   mafannovar.setClinvar20160302dsdbid(tsvMap.get("CLINDSDBID"));
                    try { if(tsvMap.get("MetaLR_score") != null) { mafannovar.setMetalrScore(new BigDecimal(tsvMap.get("MetaLR_score"))); } } catch(Exception e) { };
                    mafannovar.setDbnsfp31aInterpro(tsvMap.get("Interpro_domain"));
                    mafannovar.setMetalrPred(tsvMap.get("MetaLR_pred"));
