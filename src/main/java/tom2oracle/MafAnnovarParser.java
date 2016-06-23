@@ -190,13 +190,13 @@ public class MafAnnovarParser {
                    try { if(tsvMap.get("ExAC_NFE") != null) { mafannovar.setExacNfe(new BigDecimal(tsvMap.get("ExAC_NFE"))); } } catch(Exception e) { };
                    try { if(tsvMap.get("ExAC_OTH") != null) { mafannovar.setExacOth(new BigDecimal(tsvMap.get("ExAC_OTH"))); } } catch(Exception e) { };
                    try { if(tsvMap.get("ExAC_SAS") != null) { mafannovar.setExacSas(new BigDecimal(tsvMap.get("ExAC_SAS"))); } } catch(Exception e) { };
-                   try { if(tsvMap.get("SIFT_score") != null) { mafannovar.setSiftScorea(new BigDecimal(tsvMap.get("SIFT_Score"))); } } catch(Exception e) { };
-                   mafannovar.setSiftPreda(mafMap.get("SIFT_predA"));
+                   try { if(tsvMap.get("SIFT_score") != null) { mafannovar.setSiftScorea(new BigDecimal(tsvMap.get("SIFT_score"))); } } catch(Exception e) { };
+                   mafannovar.setSiftPreda(tsvMap.get("SIFT_pred"));
                    try { if(tsvMap.get("Polyphen2_HDIV_score") != null) { mafannovar.setPolyphen2HdivScorea(new BigDecimal(tsvMap.get("Polyphen2_HDIV_score"))); } } catch(Exception e) { };
-                   mafannovar.setPolyphen2HdivPreda(mafMap.get("Polyphen2_HDIV_pred"));
-                   mafannovar.setPolyphen2HvarPreda(mafMap.get("Polyphen2_HVAR_pred"));
-                   mafannovar.setMutationtasterPred(mafMap.get("MutationTaster_pred"));
-                   mafannovar.setMutationassessorPred(mafMap.get("MutationAssessor_pred"));
+                   mafannovar.setPolyphen2HdivPreda(tsvMap.get("Polyphen2_HDIV_pred"));
+                   mafannovar.setPolyphen2HvarPreda(tsvMap.get("Polyphen2_HVAR_pred"));
+                   mafannovar.setMutationtasterPred(tsvMap.get("MutationTaster_pred"));
+                   mafannovar.setMutationassessorPred(tsvMap.get("MutationAssessor_pred"));
                    try { if(tsvMap.get("CADD_raw") != null) { mafannovar.setCaddRaw(new BigDecimal(tsvMap.get("CADD_raw"))); } } catch(Exception e) { };
                    try { if(tsvMap.get("CADD_phred") != null) { mafannovar.setCaddPhred(new BigDecimal(tsvMap.get("CADD_phred"))); } } catch(Exception e) { };
                    
