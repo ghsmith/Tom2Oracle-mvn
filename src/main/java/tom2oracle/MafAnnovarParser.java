@@ -184,48 +184,94 @@ public class MafAnnovarParser {
                     String exacOutput = "[AGTC]:([.0-9]+),|$";
                     Pattern patternExac = Pattern.compile(exacOutput);
                     
+                    try { 
+                        if(mafMap.get("GMAF") != null)
+                        {
                     Matcher matcherGmaf = patternExac.matcher(mafMap.get("GMAF"));
                     if (matcherGmaf.find())
                     {
                         mafannovar.setExacGmaf(matcherGmaf.group(1));
                     }
+                        }
+                    }catch(Exception e) {};
+                    
+                    
+                    try { 
+                        if(mafMap.get("AFR_MAF") != null)
+                        {
                       Matcher matcherAfr = patternExac.matcher(mafMap.get("AFR_MAF"));
                     if (matcherAfr.find())
                     {
                         mafannovar.setExacAfr(matcherAfr.group(1));
                     }
+                    
+                        }
+                    }catch(Exception e) {};
+                    
+                     try { 
+                        if(mafMap.get("AMR_MAF") != null)
+                        {
                     Matcher matcherAmr = patternExac.matcher(mafMap.get("AMR_MAF"));
                       if (matcherAmr.find())
                     {
                         mafannovar.setExacAmr(matcherAmr.group(1));
                     }
+                        }
+                    }catch(Exception e) {};
+                      
+                      
+                        try { 
+                        if(mafMap.get("EAS_MAF") != null)
+                        {
                     Matcher matcherEas = patternExac.matcher(mafMap.get("EAS_MAF"));
                     if (matcherEas.find())
                     {
                         mafannovar.setExacEas(matcherEas.group(1));
                     }
+                      }
+                    }catch(Exception e) {};
+                    
+                      try { 
+                        if(mafMap.get("EUR_MAF") != null)
+                        {
                     Matcher matcherEur = patternExac.matcher(mafMap.get("EUR_MAF"));
                      if (matcherEur.find())
                     {
                         mafannovar.setExacEur(matcherEur.group(1));
-                    }
+                    }  }
+                    }catch(Exception e) {};
                     
+                    
+                      try { 
+                        if(mafMap.get("SAS_MAF") != null)
+                        {
                     Matcher matcherSas = patternExac.matcher(mafMap.get("SAS_MAF"));
                     if (matcherSas.find())
                     {
                         mafannovar.setExacSas(matcherSas.group(1));
-                    }
+                    }  }
+                    }catch(Exception e) {};
+
+                    try { 
+                        if(mafMap.get("AA_MAF") != null)
+                        {
                     Matcher matcherAa = patternExac.matcher(mafMap.get("AA_MAF"));
                     if (matcherAa.find())
                     {
                         mafannovar.setExacAa(matcherAa.group(1));
-                    }
+                    }  }
+                    }catch(Exception e) {};
+
+                      try { 
+                        if(mafMap.get("EA_MAF") != null)
+                        {
                     Matcher matcherEa = patternExac.matcher(mafMap.get("EA_MAF"));
                     if (matcherEa.find())
                     {
                         mafannovar.setExacEa(matcherEa.group(1));
                     }
-                    
+                      }
+                    }catch(Exception e) {};
                     
                     //mafannovar.setExacGmaf(mafMap.get("GMAF"));
                     //mafannovar.setExacAfr(mafMap.get("AFR_MAF"));
