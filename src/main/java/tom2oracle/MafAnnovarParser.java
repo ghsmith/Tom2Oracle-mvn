@@ -112,6 +112,15 @@ public class MafAnnovarParser {
                     mafannovar.setHugoSymbol(mafMap.get("Hugo_Symbol"));
                     mafannovar.setVariantClassification(mafMap.get("Variant_Classification"));
                     
+                    mafannovar.setVariantType(mafMap.get("Variant_Type"));
+                    mafannovar.setReferenceAllele("Reference_Allele");
+                    mafannovar.setTumorSeqAllele1("Tumor_Seq_Allele1");
+                    mafannovar.setTumorSeqAllele2("Tumor_Seq_Allele2");
+                    mafannovar.setMatchNormSeqAllele1("Match_Norm_Seq_Allele1");
+                    mafannovar.setMatchNormSeqAllele2("Match_Norm_Seq_Allele2");
+                    
+                    
+                    
                     mafannovar.setGeneRefgene(tsvMap.get("Gene.refGene"));
                     mafannovar.setFuncRefgene(tsvMap.get("Func.refGene"));
                             
@@ -157,6 +166,7 @@ public class MafAnnovarParser {
                     }
                     mafannovar.setBiotype(mafMap.get("BIOTYPE"));
                     mafannovar.setDbsnpRs(mafMap.get("dbSNP_RS"));
+                    mafannovar.setDbsnpValStatus("dbSNP_Val_Status");
                     mafannovar.setRefBase(tsvMap.get("Ref"));
                     mafannovar.setAltBase(tsvMap.get("Alt"));
                     
@@ -244,8 +254,37 @@ public class MafAnnovarParser {
                     mafannovar.setImpact(mafMap.get("IMPACT"));
                     mafannovar.setHgvsc(mafMap.get("HGVSc"));
                     mafannovar.setHgvsp(mafMap.get("HGVSp"));
+                    mafannovar.setHgvspShort(mafMap.get("HGVSp_Short"));
                     mafannovar.setTranscript(mafMap.get("Transcript_ID"));
                     mafannovar.setExonNumber(mafMap.get("Exon_Number"));
+                    try { if(mafMap.get("t_depth") != null) { mafannovar.setTDepth(new BigDecimal(mafMap.get("t_depth"))); } } catch(Exception e) { };
+                    try { if(mafMap.get("t_ref_count") != null) { mafannovar.setTRefCount(new BigDecimal(mafMap.get("t_ref_count"))); } } catch(Exception e) { };
+                    try { if(mafMap.get("t_alt_count") != null) { mafannovar.setTAltCount(new BigDecimal(mafMap.get("t_alt_count"))); } } catch(Exception e) { };
+                    mafannovar.setAllEffects(mafMap.get("all_effects"));
+                    mafannovar.setAllele(mafMap.get("Allele"));
+                    mafannovar.setGene(mafMap.get("Gene"));
+                    mafannovar.setFeatureType(mafMap.get("Feature_type"));
+                    mafannovar.setCdnaPosition(mafMap.get("cDNA_position"));
+                    mafannovar.setCdsPosition(mafMap.get("CDS_position"));
+                    mafannovar.setProteinPosition(mafMap.get("Protein_position"));
+                    mafannovar.setAminoAcids(mafMap.get("Amino_acids"));
+                    mafannovar.setCodons(mafMap.get("Codons"));
+                    mafannovar.setExistingVariation(mafMap.get("Existing_Variation"));
+                    try { if(mafMap.get("STRAND") != null) { mafannovar.setStrandcaps(new BigDecimal(mafMap.get("STRAND"))); } } catch(Exception e) { };
+                    mafannovar.setSymbol(mafMap.get("SYMBOL"));
+                    mafannovar.setSymbolSource(mafMap.get("SYMBOL_SOURCE"));
+                    mafannovar.setHgncId(mafMap.get("HGNC_ID"));
+                    mafannovar.setCanonical(mafMap.get("CANONICAL"));
+                    mafannovar.setCcds(mafMap.get("CCDS"));
+                    mafannovar.setEnsp(mafMap.get("ENSP"));
+                    mafannovar.setSwissprot(mafMap.get("SWISSPROT"));
+                    mafannovar.setTrembl(mafMap.get("TREMBL"));
+                    mafannovar.setUniparc(mafMap.get("UNIPARC"));
+                    mafannovar.setSiftMaf(mafMap.get("SIFT"));
+                    mafannovar.setPolyphenMaf(mafMap.get("PolyPhen"));
+                    mafannovar.setExonNumber(mafMap.get("EXON"));
+                    mafannovar.setExonNumber(mafMap.get("INTRON"));
+                    mafannovar.setDomains(mafMap.get("DOMAINS"));
                     mafannovar.setRefseq(mafMap.get("RefSeq"));
                     mafannovar.setExistingVariation(mafMap.get("Existing_Variation"));
                     mafannovar.setDomains(mafMap.get("DOMAINS"));
