@@ -622,7 +622,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="ALL_EFFECTS", length=2000)
+    @Column(name="ALL_EFFECTS", length=4000)
     public String getAllEffects() {
         return this.allEffects;
     }
@@ -822,7 +822,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="TREMBL", length=1000)
+    @Column(name="TREMBL", length=4000)
     public String getTrembl() {
         return this.trembl;
     }
@@ -922,7 +922,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="DOMAINS", length=2000)
+    @Column(name="DOMAINS", length=4000)
     public String getDomains() {
         return this.domains;
     }
