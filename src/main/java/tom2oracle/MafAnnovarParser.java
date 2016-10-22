@@ -113,11 +113,11 @@ public class MafAnnovarParser {
                     mafannovar.setVariantClassification(mafMap.get("Variant_Classification"));
                     
                     mafannovar.setVariantType(mafMap.get("Variant_Type"));
-                    mafannovar.setReferenceAllele("Reference_Allele");
-                    mafannovar.setTumorSeqAllele1("Tumor_Seq_Allele1");
-                    mafannovar.setTumorSeqAllele2("Tumor_Seq_Allele2");
-                    mafannovar.setMatchNormSeqAllele1("Match_Norm_Seq_Allele1");
-                    mafannovar.setMatchNormSeqAllele2("Match_Norm_Seq_Allele2");
+                    mafannovar.setReferenceAllele(mafMap.get("Reference_Allele"));
+                    mafannovar.setTumorSeqAllele1(mafMap.get("Tumor_Seq_Allele1"));
+                    mafannovar.setTumorSeqAllele2(mafMap.get("Tumor_Seq_Allele2"));
+                    mafannovar.setMatchNormSeqAllele1(mafMap.get("Match_Norm_Seq_Allele1"));
+                    mafannovar.setMatchNormSeqAllele2(mafMap.get("Match_Norm_Seq_Allele2"));
                     
                     
                     
@@ -166,7 +166,7 @@ public class MafAnnovarParser {
                     }
                     mafannovar.setBiotype(mafMap.get("BIOTYPE"));
                     mafannovar.setDbsnpRs(mafMap.get("dbSNP_RS"));
-                    mafannovar.setDbsnpValStatus("dbSNP_Val_Status");
+                    mafannovar.setDbsnpValStatus(mafMap.get("dbSNP_Val_Status"));
                     mafannovar.setRefBase(tsvMap.get("Ref"));
                     mafannovar.setAltBase(tsvMap.get("Alt"));
                     
