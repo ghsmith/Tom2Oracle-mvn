@@ -930,7 +930,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="PUBMED", length=1000)
+    @Column(name="PUBMED", length=2000)
     public String getPubmed() {
         return this.pubmed;
     }
