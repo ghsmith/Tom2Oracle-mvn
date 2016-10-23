@@ -420,7 +420,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="AACHANGE_REFGENE", length=500)
+    @Column(name="AACHANGE_REFGENE", length=1500)
     public String getAachangeRefgene() {
         return this.aachangeRefgene;
     }
@@ -690,7 +690,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="CODONS", length=50)
+    @Column(name="CODONS", length=200)
     public String getCodons() {
         return this.codons;
     }
@@ -960,7 +960,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="COSMIC70", length=200)
+    @Column(name="COSMIC70", length=1000)
     public String getCosmic70() {
         return this.cosmic70;
     }
