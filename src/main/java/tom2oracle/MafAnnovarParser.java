@@ -262,7 +262,7 @@ public class MafAnnovarParser {
                     try { if(tsvMap.get("Read Depth") != null) { mafannovar.setTDepth(new BigDecimal(tsvMap.get("Read Depth"))); } } catch(Exception e) { }
                     try { if(tsvMap.get("Read Depth") != null && tsvMap.get("Alt Read Depth") != null) { 
                         BigDecimal readDepth=new BigDecimal(tsvMap.get("Read Depth"));
-                        BigDecimal altDepth=new BigDecimal(tsvMap.get("Read Depth"));
+                        BigDecimal altDepth=new BigDecimal(tsvMap.get("Alt Read Depth"));
                         BigDecimal refDepth=readDepth.subtract(altDepth);
                         mafannovar.setTRefCount(refDepth); 
                     
