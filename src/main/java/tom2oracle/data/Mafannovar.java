@@ -550,7 +550,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="HGVSC", length=100)
+    @Column(name="HGVSC", length=1000)
     public String getHgvsc() {
         return this.hgvsc;
     }
@@ -560,7 +560,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="HGVSP", length=100)
+    @Column(name="HGVSP", length=1000)
     public String getHgvsp() {
         return this.hgvsp;
     }
@@ -570,7 +570,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="HGVSP_SHORT", length=100)
+    @Column(name="HGVSP_SHORT", length=500)
     public String getHgvspShort() {
         return this.hgvspShort;
     }

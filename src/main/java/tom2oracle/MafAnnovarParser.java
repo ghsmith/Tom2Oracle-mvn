@@ -102,6 +102,7 @@ public class MafAnnovarParser {
                 
                 String[] header = mapReader.getHeader(true);
                 Map<String, String> tsvMap;
+                
                 while((tsvMap = mapReader.read(header)) != null && (mafMap = mapReaderMaf.read(headerMaf)) != null) {
                     Mafannovar mafannovar = new Mafannovar();
                     mafannovar.setLibraryPrep(libraryPrep);
@@ -111,7 +112,6 @@ public class MafAnnovarParser {
                     mafannovar.setConsequence(mafMap.get("Consequence"));
                     mafannovar.setHugoSymbol(mafMap.get("Hugo_Symbol"));
                     mafannovar.setVariantClassification(mafMap.get("Variant_Classification"));
-                    
                     mafannovar.setVariantType(mafMap.get("Variant_Type"));
                     mafannovar.setReferenceAllele(mafMap.get("Reference_Allele"));
                     mafannovar.setTumorSeqAllele1(mafMap.get("Tumor_Seq_Allele1"));
@@ -257,9 +257,26 @@ public class MafAnnovarParser {
                     mafannovar.setHgvspShort(mafMap.get("HGVSp_Short"));
                     mafannovar.setTranscript(mafMap.get("Transcript_ID"));
                     mafannovar.setExonNumber(mafMap.get("Exon_Number"));
+                    if(pipeline.contains("VarScan"))//because vep for varscan can't seem to get the depths so you have to calculation them from tsv
+                    {
+                    try { if(tsvMap.get("Read Depth") != null) { mafannovar.setTDepth(new BigDecimal(tsvMap.get("Read Depth"))); } } catch(Exception e) { }
+                    try { if(tsvMap.get("Read Depth") != null && tsvMap.get("Alt Read Depth") != null) { 
+                        BigDecimal readDepth=new BigDecimal(tsvMap.get("Read Depth"));
+                        BigDecimal altDepth=new BigDecimal(tsvMap.get("Read Depth"));
+                        BigDecimal refDepth=readDepth.subtract(altDepth);
+                        mafannovar.setTRefCount(refDepth); 
+                    
+                    } } catch(Exception e) { }
+                    try { if(tsvMap.get("Alt Read Depth") != null) { mafannovar.setTAltCount(new BigDecimal(tsvMap.get("Alt Read Depth"))); } } catch(Exception e) { }
+                        
+                        
+                    }else
+                    {
                     try { if(mafMap.get("t_depth") != null) { mafannovar.setTDepth(new BigDecimal(mafMap.get("t_depth"))); } } catch(Exception e) { };
                     try { if(mafMap.get("t_ref_count") != null) { mafannovar.setTRefCount(new BigDecimal(mafMap.get("t_ref_count"))); } } catch(Exception e) { };
                     try { if(mafMap.get("t_alt_count") != null) { mafannovar.setTAltCount(new BigDecimal(mafMap.get("t_alt_count"))); } } catch(Exception e) { };
+                    
+                    }
                     mafannovar.setAllEffects(mafMap.get("all_effects"));
                     mafannovar.setAllele(mafMap.get("Allele"));
                     mafannovar.setGene(mafMap.get("Gene"));
