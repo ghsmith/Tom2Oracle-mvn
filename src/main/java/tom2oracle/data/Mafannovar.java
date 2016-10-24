@@ -510,7 +510,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="DBNSFP31A_INTERPRO", length=200)
+    @Column(name="DBNSFP31A_INTERPRO", length=500)
     public String getDbnsfp31aInterpro() {
         return this.dbnsfp31aInterpro;
     }
