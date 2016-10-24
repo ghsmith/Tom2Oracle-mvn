@@ -1100,7 +1100,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="CLINVAR_20160302SIG", length=100)
+    @Column(name="CLINVAR_20160302SIG", length=300)
     public String getClinvar20160302sig() {
         return this.clinvar20160302sig;
     }
@@ -1110,7 +1110,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="CLINVAR_20160302DBN", length=100)
+    @Column(name="CLINVAR_20160302DBN", length=300)
     public String getClinvar20160302dbn() {
         return this.clinvar20160302dbn;
     }
@@ -1120,7 +1120,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="CLINVAR_20160302ACC", length=100)
+    @Column(name="CLINVAR_20160302ACC", length=300)
     public String getClinvar20160302acc() {
         return this.clinvar20160302acc;
     }
@@ -1130,7 +1130,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="CLINVAR_20160302DSDB", length=100)
+    @Column(name="CLINVAR_20160302DSDB", length=300)
     public String getClinvar20160302dsdb() {
         return this.clinvar20160302dsdb;
     }
@@ -1140,7 +1140,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="CLINVAR_20160302DSDBID", length=100)
+    @Column(name="CLINVAR_20160302DSDBID", length=300)
     public String getClinvar20160302dsdbid() {
         return this.clinvar20160302dsdbid;
     }
