@@ -300,7 +300,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="HUGO_SYMBOL", length=100)
+    @Column(name="HUGO_SYMBOL", length=500)
     public String getHugoSymbol() {
         return this.hugoSymbol;
     }
@@ -320,7 +320,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="REFERENCE_ALLELE", length=50)
+    @Column(name="REFERENCE_ALLELE", length=100)
     public String getReferenceAllele() {
         return this.referenceAllele;
     }
@@ -330,7 +330,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="TUMOR_SEQ_ALLELE1", length=50)
+    @Column(name="TUMOR_SEQ_ALLELE1", length=100)
     public String getTumorSeqAllele1() {
         return this.tumorSeqAllele1;
     }
@@ -340,7 +340,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="TUMOR_SEQ_ALLELE2", length=50)
+    @Column(name="TUMOR_SEQ_ALLELE2", length=100)
     public String getTumorSeqAllele2() {
         return this.tumorSeqAllele2;
     }
@@ -350,7 +350,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="MATCH_NORM_SEQ_ALLELE1", length=50)
+    @Column(name="MATCH_NORM_SEQ_ALLELE1", length=100)
     public String getMatchNormSeqAllele1() {
         return this.matchNormSeqAllele1;
     }
@@ -360,7 +360,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="MATCH_NORM_SEQ_ALLELE2", length=50)
+    @Column(name="MATCH_NORM_SEQ_ALLELE2", length=100)
     public String getMatchNormSeqAllele2() {
         return this.matchNormSeqAllele2;
     }
@@ -390,7 +390,7 @@ public class Mafannovar  implements java.io.Serializable {
     }
 
     
-    @Column(name="GENE_REFGENE", length=100)
+    @Column(name="GENE_REFGENE", length=500)
     public String getGeneRefgene() {
         return this.geneRefgene;
     }
