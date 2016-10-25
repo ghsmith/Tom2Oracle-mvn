@@ -299,12 +299,12 @@ public class MafAnnovarParser {
                     mafannovar.setUniparc(mafMap.get("UNIPARC"));
                     mafannovar.setSiftMaf(mafMap.get("SIFT"));
                     mafannovar.setPolyphenMaf(mafMap.get("PolyPhen"));
-                    mafannovar.setExonNumber(mafMap.get("EXON"));
-                    mafannovar.setExonNumber(mafMap.get("INTRON"));
+                    mafannovar.setExon(mafMap.get("EXON"));
+                    mafannovar.setIntron(mafMap.get("INTRON"));
                     mafannovar.setDomains(mafMap.get("DOMAINS"));
                     mafannovar.setRefseq(mafMap.get("RefSeq"));
                     mafannovar.setExistingVariation(mafMap.get("Existing_Variation"));
-                    mafannovar.setDomains(mafMap.get("DOMAINS"));
+                   // mafannovar.setDomains(mafMap.get("DOMAINS"));
                     mafannovar.setPubmed(mafMap.get("PUBMED"));
                     mafannovar.setClinSig(mafMap.get("CLIN_SIG"));
                     //mafannovar.setInterproDomain(tsvMap.get("Interpro_domain"));
